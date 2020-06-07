@@ -1,6 +1,6 @@
 # dateinterval
 
-A Flutter package fro getting date intervals
+A Flutter package for getting date intervals (units of time between two DateTime values)
 
 ## Getting Started
 
