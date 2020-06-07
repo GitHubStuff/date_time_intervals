@@ -1,0 +1,16 @@
+name: date_time_intervals
+description: A Flutter package for getting date intervals
+version: 0.1.2+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
