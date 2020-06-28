@@ -43,6 +43,6 @@ Example: If the interval is 1hr and 1min but CalendarItem.hour IS NOT in the __s
 
 ### Exact vs Approximate
 
-Because years and months are inexact (years because of leap year, months because the number of days between 15-Feb and 15-Mar can vary be leap year but still be a month, and since some months have 30 or 31 days there is alos variance in what a 'month' is.) requests that include 'Year' and/or 'Month' are inexact.
+Because years and months are inexact (years because of leap year, months because the number of days between 15-Feb and 15-Mar can vary because of leap year but still be a month, and since some months have 30 or 31 days there is also variance in what a 'month' is.) requests that include 'Year' and/or 'Month' are inexact.
 
 Any request for intervals that don't include both year and month are more exact, because of the Year/Month variance described.
