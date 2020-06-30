@@ -4,13 +4,13 @@ A Flutter package for getting date intervals (units of time between two DateTime
 
 ## Getting Started
 
-Creates an object that has interval information for years. months, days, hours, minutes, seconds between two dates. (Milliseconds and Microseconds are zeroed out)
+Creates an object that has interval information for years. months, days, hours, minutes, seconds between two dates. (Milli-seconds and Micro-seconds are zeroed out)
 
 ### Enums and Class
 
 <pre>
 
-enum CalendarDirection { sinceEnd, untilEnd }
+enum CalendarDirection { between, sinceEnd, untilEnd }
 enum CalendarItem { years, months, days, hours, minutes, seconds }
 
 CalendarItems({
@@ -19,9 +19,11 @@ CalendarItems({
     @required DateTime endEvent,
   })
 
+CalendarItems.
+
 </pre>
 
-### Example Usage
+### Example Usage 1
 
 <pre>
   final DateTime startTime = DateTime.now().subtract(Duration(days:1));
@@ -35,9 +37,26 @@ CalendarItems({
   final int hours = calendarItems.hours; // 24
   final int minutes = calendarItems.minutes; // 0
   final int seconds = calendarItems.seconds; // 0
-  final CalendarDirection direction = calendarItems.direction; // CalendarDirection.untilEnd
-
+  final CalendarDirection direction = calendarItems.direction; // CalendarDirection.between
 </pre>
+
+### Example Usage 2
+
+<pre>
+final startEvent = DateTime(2020, 4, 11, 17, 33, 00);
+//final endEvent = DateTime(2020, 12, 12, 20, 00, 00);
+
+    final calculator = DateTimeIntervals.fromCurrentDateTime(setOfCalendarItems: {
+      CalendarItem.months,
+      CalendarItem.days,
+      CalendarItem.hours,
+      CalendarItem.minutes,
+      CalendarItem.seconds,
+    }, eventDateTime: startEvent);
+
+final CalendarDirection direction = calendarItems.direction; // CalendarDirection.sinceEnd (until test is run after 12-Dec-2020, then it will be 'untilEnd')
+</pre>
+
 **NOTE:** Any CalendarItem omitted will result in the next item having the cumulative value.
 Example: If the interval is 1hr and 1min but CalendarItem.hour IS NOT in the __setOfCalendarItems__, then the 'minutes' will be 61.
 

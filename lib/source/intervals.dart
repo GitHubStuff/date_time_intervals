@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../date_time_intervals.dart';
+import '../date_time_intervals.dart';
 
 const int _HOURS_PER_DAY = 24;
 const int _MONTHS_PER_YEAR = 12;
@@ -9,21 +10,6 @@ const int _MINUTES_PER_DAY = 1440;
 const int _SECONDS_PER_DAY = 86400;
 const int _SECONDS_PER_HOUR = 3600;
 const int _SECONDS_PER_MINUTE = 60;
-
-DateTime _timeWrapper(DateTime dateTime) {
-  return (dateTime == null)
-      ? null
-      : DateTime(
-          dateTime.year,
-          dateTime.month,
-          dateTime.day,
-          dateTime.hour,
-          dateTime.minute,
-          dateTime.second,
-          0,
-          0,
-        );
-}
 
 class DateTimeIntervals {
   int get years => _years;
@@ -53,15 +39,46 @@ class DateTimeIntervals {
     _direction =
         startingDateTime.compareTo(endingDateTime) > 0 ? CalendarDirection.sinceEnd : CalendarDirection.untilEnd;
     if (_direction == CalendarDirection.sinceEnd) {
-      startingDateTime = endEvent;
-      endingDateTime = startEvent;
+      startingDateTime = _timeWrapper(endEvent);
+      endingDateTime = _timeWrapper(startEvent);
     }
+    _direction = CalendarDirection.between;
 
     if (setOfCalendarItems.contains(CalendarItem.years) || setOfCalendarItems.contains(CalendarItem.months)) {
       _approximateInterval(setOfCalendarItems, startingDateTime, endingDateTime);
     } else {
       _exactInterval(setOfCalendarItems, startingDateTime, endingDateTime);
     }
+  }
+  factory DateTimeIntervals.fromCurrentDateTime({
+    @required Set<CalendarItem> setOfCalendarItems,
+    @required DateTime eventDateTime,
+  }) {
+    final endDateTime = DateTime.now();
+    DateTimeIntervals dateTimeIntervals = DateTimeIntervals(
+      setOfCalendarItems: setOfCalendarItems,
+      startEvent: eventDateTime,
+      endEvent: endDateTime,
+    );
+    final duration = endDateTime.difference(eventDateTime);
+    dateTimeIntervals._direction = (duration.isNegative) ? CalendarDirection.untilEnd : CalendarDirection.sinceEnd;
+    return dateTimeIntervals;
+  }
+
+  //Rebuild DateTime micro and milli seconds set to zero(0)
+  DateTime _timeWrapper(DateTime dateTime) {
+    return (dateTime == null)
+        ? null
+        : DateTime(
+            dateTime.year,
+            dateTime.month,
+            dateTime.day,
+            dateTime.hour,
+            dateTime.minute,
+            dateTime.second,
+            0,
+            0,
+          );
   }
 
   void _approximateInterval(Set<CalendarItem> setOfCalendarItems, DateTime startingDateTime, DateTime endingDateTime) {

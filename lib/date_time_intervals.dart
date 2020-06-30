@@ -2,7 +2,7 @@ library date_time_intervals;
 
 export 'source/intervals.dart';
 
-enum CalendarDirection { sinceEnd, untilEnd }
+enum CalendarDirection { between, sinceEnd, untilEnd }
 
 enum CalendarItem {
   years,
