@@ -19,7 +19,10 @@ CalendarItems({
     @required DateTime endEvent,
   })
 
-CalendarItems.
+factory DateTimeIntervals.fromCurrentDateTime({
+    @required Set&ltCalendarItem&gt setOfCalendarItems,
+    @required DateTime eventDateTime,
+  })
 
 </pre>
 
