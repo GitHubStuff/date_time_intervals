@@ -65,3 +65,14 @@ Example: If the interval is 1hr and 1min but CalendarItem.hour IS NOT in the __s
 Because years and months are inexact (years because of leap year, months because the number of days between 15-Feb and 15-Mar can vary because of leap year but still be a month, and since some months have 30 or 31 days there is also variance in what a 'month' is.) requests that include 'Year' and/or 'Month' are inexact.
 
 Any request for intervals that don't include both year and month are more exact, because of the Year/Month variance described.
+
+## Helpers
+
+### Pair of helpers to faciliate storing (and fetching) <i>CalendarItem</i> in SQLite database as comma seperated string.
+<pre>
+// Yields a comma seperated string of '<i><b>enum CalendarItem</b></i>'s
+String calendarItemsAsString(Set&ltCalendarItem&gt items);
+
+// <u>string</u> is text string of '<i><b>enum CalendarItem</b></i>'s
+Set&ltCalendarItem&gt calendarItemsFrom({String string});
+</pre>

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../date_time_intervals.dart';
-import '../date_time_intervals.dart';
+import 'date_time_intervals.dart';
 
 const int _HOURS_PER_DAY = 24;
 const int _MONTHS_PER_YEAR = 12;
