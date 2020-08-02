@@ -66,12 +66,12 @@ class DateTimeIntervals {
   }
 
   String formattedString(
-      {List<String> yearPlurality = const ['year', 'years'],
-      List<String> monthsPlurality = const ['month', 'months'],
-      List<String> daysPlurality = const ['day', 'days'],
-      List<String> hoursPlurality = const ['hour', 'hours'],
-      List<String> minutesPlurality = const ['minute', 'minutes'],
-      List<String> secondsPlurality = const ['second', 'seconds']}) {
+      {List<String> yearPlurality = const ['yr', 'yrs'],
+      List<String> monthsPlurality = const ['mo', 'mos'],
+      List<String> daysPlurality = const ['dy', 'dys'],
+      List<String> hoursPlurality = const ['hr', 'hrs'],
+      List<String> minutesPlurality = const ['min', 'mins'],
+      List<String> secondsPlurality = const ['sec', 'secs']}) {
     if (yearPlurality.length != 2) throw FlutterError('"years" must have two values');
     if (monthsPlurality.length != 2) throw FlutterError('"months" must have two values');
     if (daysPlurality.length != 2) throw FlutterError('"days" must have two values');
