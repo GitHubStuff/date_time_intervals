@@ -11,6 +11,7 @@ const int _SECONDS_PER_HOUR = 3600;
 const int _SECONDS_PER_MINUTE = 60;
 
 class DateTimeIntervals {
+  // NOTE: null means wasn't requested
   int get years => _years;
   int get months => _months;
   int get days => _days;
@@ -62,6 +63,36 @@ class DateTimeIntervals {
     final duration = endDateTime.difference(eventDateTime);
     dateTimeIntervals._direction = (duration.isNegative) ? CalendarDirection.untilEnd : CalendarDirection.sinceEnd;
     return dateTimeIntervals;
+  }
+
+  String formattedString(
+      {List<String> yearPlurality = const ['year', 'years'],
+      List<String> monthsPlurality = const ['month', 'months'],
+      List<String> daysPlurality = const ['day', 'days'],
+      List<String> hoursPlurality = const ['hour', 'hours'],
+      List<String> minutesPlurality = const ['minute', 'minutes'],
+      List<String> secondsPlurality = const ['second', 'seconds']}) {
+    if (yearPlurality.length != 2) throw FlutterError('"years" must have two values');
+    if (monthsPlurality.length != 2) throw FlutterError('"months" must have two values');
+    if (daysPlurality.length != 2) throw FlutterError('"days" must have two values');
+    if (hoursPlurality.length != 2) throw FlutterError('"hours" must have two values');
+    if (minutesPlurality.length != 2) throw FlutterError('"minutes" must have two values');
+    if (secondsPlurality.length != 2) throw FlutterError('"seconds" must have two values');
+    String _result = '';
+    void add(int value, List<String> unit) {
+      if (value == null) return;
+      if (_result.isNotEmpty) _result = '$_result ';
+      final theUnit = (value == 1) ? unit[0] : unit[1];
+      _result = '$_result$value $theUnit';
+    }
+
+    add(_years, yearPlurality);
+    add(_months, monthsPlurality);
+    add(_days, daysPlurality);
+    add(_hours, hoursPlurality);
+    add(_minutes, minutesPlurality);
+    add(_seconds, secondsPlurality);
+    return _result;
   }
 
   //Rebuild DateTime micro and milli seconds set to zero(0)
