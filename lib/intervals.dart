@@ -72,12 +72,12 @@ class DateTimeIntervals {
       List<String> hoursPlurality = const ['hr', 'hrs'],
       List<String> minutesPlurality = const ['min', 'mins'],
       List<String> secondsPlurality = const ['sec', 'secs']}) {
-    if (yearPlurality.length != 2) throw FlutterError('"years" must have two values');
-    if (monthsPlurality.length != 2) throw FlutterError('"months" must have two values');
-    if (daysPlurality.length != 2) throw FlutterError('"days" must have two values');
-    if (hoursPlurality.length != 2) throw FlutterError('"hours" must have two values');
-    if (minutesPlurality.length != 2) throw FlutterError('"minutes" must have two values');
-    if (secondsPlurality.length != 2) throw FlutterError('"seconds" must have two values');
+    if (yearPlurality?.length != 2) throw FlutterError('"years" must have two values');
+    if (monthsPlurality?.length != 2) throw FlutterError('"months" must have two values');
+    if (daysPlurality?.length != 2) throw FlutterError('"days" must have two values');
+    if (hoursPlurality?.length != 2) throw FlutterError('"hours" must have two values');
+    if (minutesPlurality?.length != 2) throw FlutterError('"minutes" must have two values');
+    if (secondsPlurality?.length != 2) throw FlutterError('"seconds" must have two values');
     String _result = '';
     void add(int value, List<String> unit) {
       if (value == null) return;
