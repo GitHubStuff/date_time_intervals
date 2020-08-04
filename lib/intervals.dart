@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'date_time_intervals.dart';
 
@@ -83,7 +84,7 @@ class DateTimeIntervals {
       if (value == null) return;
       if (_result.isNotEmpty) _result = '$_result ';
       final theUnit = (value == 1) ? unit[0] : unit[1];
-      _result = '$_result$value $theUnit';
+      _result = '$_result${NumberFormat('#,###').format(value)} $theUnit';
     }
 
     add(_years, yearPlurality);
