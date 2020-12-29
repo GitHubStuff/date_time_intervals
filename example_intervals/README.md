@@ -60,21 +60,6 @@ final CalendarDirection direction = calendarItems.direction;
 // CalendarDirection.sinceEnd (until test is run after 12-Dec-2020, then it will be 'untilEnd')
 ```
 
-### Return Type
-
-
-**DateTimeIntervals** as a class that hold properties that detail the interval.
-
-- CalendarDirection direction
-- int hours
-- int years
-- int months
-- int days
-- int hours
-- int minutes
-- int seconds
-
-
 **NOTE:** Any CalendarItem omitted will result in the next item having the cumulative value.
 Example: If the interval is 1hr and 1min but CalendarItem.hour IS NOT in the __setOfCalendarItems__, then the 'minutes' will be 61.
 
@@ -95,23 +80,3 @@ String calendarItemsAsString(Set<CalendarItem> items);
 // string is text string of 'num CalendarItem's
 Set<CalendarItem> calendarItemsFrom({String string});
 ```
-
-### Pair of helpers for displaying intervals
-
-```dart
-/// string with the number of years/months/days formatted as 'yy/mm/dd (zero padded to a minimal width of 2)
-/// any nulled values will display '--'
-String launchDate({bool includeDirection});
-
-/// string with number of hours/minutes/seconds formatted as 'hh:mm:ss (zero padded to a minimal width of 2)
-/// any nulled values will display '--'
-String launchTime({bool includeDirection});
-```
-
-* NOTE: {bool includeDirection} if TRUE will add "+" if the event is in the future, and '-' if the event is in the past
-* Think Rocket launch displays the countdown before launch has '-', and '+' after lift-off.
-
-
-### Conclusion
-
-Be kind to each other.
