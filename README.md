@@ -14,7 +14,7 @@ enum CalendarDirection { between, sinceEnd, untilEnd }
 enum CalendarItem { years, months, days, hours, minutes, seconds }
 
 CalendarItems({
-    @required Set&ltCalendarItem> setOfCalendarItems,
+    @required Set<CalendarItem> setOfCalendarItems,
     @required DateTime startEvent,
     @required DateTime endEvent,
   })
@@ -74,7 +74,6 @@ final CalendarDirection direction = calendarItems.direction;
 - int minutes
 - int seconds
 
-
 **NOTE:** Any CalendarItem omitted will result in the next item having the cumulative value.
 Example: If the interval is 1hr and 1min but CalendarItem.hour IS NOT in the __setOfCalendarItems__, then the 'minutes' will be 61.
 
@@ -110,7 +109,6 @@ String launchTime({bool includeDirection});
 
 * NOTE: {bool includeDirection} if TRUE will add "+" if the event is in the future, and '-' if the event is in the past
 * Think Rocket launch displays the countdown before launch has '-', and '+' after lift-off.
-
 
 ### Conclusion
 
